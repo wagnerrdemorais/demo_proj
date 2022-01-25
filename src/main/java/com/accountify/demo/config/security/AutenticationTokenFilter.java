@@ -42,6 +42,9 @@ public class AutenticationTokenFilter extends OncePerRequestFilter {
         }
 
         User user = userOpt.get();
+
+        user.getPerfis().forEach(perfil -> System.out.println("Using Role: " + perfil.getNome()));
+
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, user.getPerfis());
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
