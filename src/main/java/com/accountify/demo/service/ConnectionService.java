@@ -17,7 +17,7 @@ public class ConnectionService {
         Properties connectionProps = new Properties();
         connectionProps.put("user", "root");
         connectionProps.put("password", "password");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/accountify", connectionProps);
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/accountify", connectionProps);
         System.out.println("Connected to database");
         return conn;
     }

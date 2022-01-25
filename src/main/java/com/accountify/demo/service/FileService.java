@@ -18,22 +18,22 @@ import java.util.zip.Checksum;
 public class FileService {
 
     public void zipTest(String file, String name) throws ZipException {
-        String zipPath = "/home/wagner.morais/tests/" + name + ".zip";
+        String zipPath = "/home/joao.soares/tests/" + name + ".zip";
         new ZipFile(zipPath).addFile(new File(file));
     }
 
     public File getNewFile(MultipartFile file) throws IOException {
-        File newFile = new File("/home/wagner.morais/tests/" + file.getOriginalFilename());
+        File newFile = new File("/home/joao.soares/tests/" + file.getOriginalFilename());
         file.transferTo(newFile);
         newFile.createNewFile();
         return newFile;
     }
 
     public ProgressMonitor zipSplitFileWithProgress(MultipartFile file) throws IOException {
-        File newFile = new File("/home/wagner.morais/tests/tmp/" + file.getOriginalFilename());
+        File newFile = new File("/home/joao.soares/tests/tmp/" + file.getOriginalFilename());
         file.transferTo(newFile);
 
-        ZipFile zipFile = new ZipFile(new File("/home/wagner.morais/tests/test.zip"));
+        ZipFile zipFile = new ZipFile(new File("/home/joao.soares/tests/test.zip"));
         zipFile.setRunInThread(true);
 
         ProgressMonitor progressMonitor = zipFile.getProgressMonitor();
