@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<meta charset="UTF-8">
+<head th:replace="~{base :: head}"><title></title></head>
+<body>
+<div th:replace="~{base :: logo}"></div>
+<div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="box col-md-6 col-md-offset-3">
+                <p/>
+                <form method="post" th:action="@{/jwt-csrf-form}">
+                    <input type="submit" class="btn btn-primary" value="Click Me!"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{base :: title('Login')}"></div>
+
+    <div class="card mb-3">
+        <form th:action="@{/auth}" class="card-body" method="post">
+            <div class="form-group">
+                <label id="email">Usuário
+                    <input name="email" class="form-control" placeholder="usuário"/>
+                </label>
+            </div>
+            <div class="form-group">
+                <label id="password">Senha
+                    <input type="password" name="password" class="form-control" placeholder="senha"/>
+                </label>
+            </div>
+            <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
