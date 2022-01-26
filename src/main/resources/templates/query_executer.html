@@ -10,24 +10,10 @@
                 <label id="query">Query
                     <input id="input_query" name="query" class="form-control" placeholder="select * from lancamento"/>
                 </label>
-            <button class="btn btn-primary" onclick="submitQuery()">Run</button>
+            <button class="btn btn-primary" onclick="runQuery()">Run</button>
             <label>Query Result:
                 <p id="queryResult"></p>
             </label>
-
-            <script th:inline="javascript">
-                function submitQuery() {
-                    let url = "http://localhost:8080/query";
-                    let query = $("#input_query").val();
-                    let data = {"query": ""+query}
-
-                    let callback = function(e) {
-                        console.log(e);
-                        $("#queryResult").text(e);
-                    }
-                    doRequest(url, "post", data, callback);
-                }
-            </script>
         </div>
     </div>
 </body>

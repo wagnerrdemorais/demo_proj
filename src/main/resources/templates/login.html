@@ -12,32 +12,7 @@
                 <label id="password">Senha
                     <input id="input_password" type="password" name="password" class="form-control" placeholder="senha"/>
                 </label>
-                <button class="btn btn-primary" onclick="submit()">Login</button>
-                <script th:inline="javascript">
-                    function submit() {
-                        console.log("submit");
-                        let inputEmail = $("#input_email").val();
-                        let input_password = $("#input_password").val();
-                            $.ajax({
-                                url: "http://localhost:8080/auth",
-                                type: "post",
-                                data: {
-                                    "email": inputEmail,
-                                    "password": input_password
-                                },
-                                error: function (e) {
-                                    console.log(e);
-                                    console.log("Error response text: ", e.responseText);
-                                },
-                                success: function (data) {
-                                    console.log(data);
-                                    console.log("Success response text: ", data.responseText);
-                                    createLocalstorageItem(data);
-                                    window.location.href = "http://localhost:8080/query_executer"
-                                }
-                            });
-                    }
-                </script>
+                <button class="btn btn-primary" onclick="doLogin()">Login</button>
             </div>
         </div>
     </body>
