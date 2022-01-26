@@ -4,6 +4,7 @@ import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.progress.ProgressMonitor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,23 +18,26 @@ import java.util.zip.Checksum;
 @Service
 public class FileService {
 
+    @Value("${default.test.folder}")
+    private String testFolderPath;
+
     public void zipTest(String file, String name) throws ZipException {
-        String zipPath = "/home/joao.soares/tests/" + name + ".zip";
+        String zipPath = testFolderPath + name + ".zip";
         new ZipFile(zipPath).addFile(new File(file));
     }
 
     public File getNewFile(MultipartFile file) throws IOException {
-        File newFile = new File("/home/joao.soares/tests/" + file.getOriginalFilename());
+        File newFile = new File(testFolderPath + file.getOriginalFilename());
         file.transferTo(newFile);
         newFile.createNewFile();
         return newFile;
     }
 
     public ProgressMonitor zipSplitFileWithProgress(MultipartFile file) throws IOException {
-        File newFile = new File("/home/joao.soares/tests/tmp/" + file.getOriginalFilename());
+        File newFile = new File(testFolderPath+"tmp/" + file.getOriginalFilename());
         file.transferTo(newFile);
 
-        ZipFile zipFile = new ZipFile(new File("/home/joao.soares/tests/test.zip"));
+        ZipFile zipFile = new ZipFile(new File(testFolderPath+"test.zip"));
         zipFile.setRunInThread(true);
 
         ProgressMonitor progressMonitor = zipFile.getProgressMonitor();

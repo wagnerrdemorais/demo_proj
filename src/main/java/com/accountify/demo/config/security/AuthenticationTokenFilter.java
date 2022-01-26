@@ -14,53 +14,46 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-public class AutenticationTokenFilter extends OncePerRequestFilter {
+public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
     private final UserRepository userRepository;
 
-    public AutenticationTokenFilter(TokenService tokenService, UserRepository userRepository) {
+    public AuthenticationTokenFilter(TokenService tokenService, UserRepository userRepository) {
         this.tokenService = tokenService;
         this.userRepository = userRepository;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String token = getToken(request);
+    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)
+            throws ServletException, IOException {
+        String token = getToken(req);
 
-        if(tokenService.isValid(token)) {
-            authClient(token);
+        if (tokenService.isValid(token)) {
+            authenticate(token);
         }
-        filterChain.doFilter(request, response);
+
+        filterChain.doFilter(req, res);
     }
 
-    private void authClient(String token) {
+    private void authenticate(String token) {
         Long userId = tokenService.getUserId(token);
         Optional<User> userOpt = userRepository.findById(userId);
-        if (!userOpt.isPresent()) {
+
+        if (userOpt.isEmpty()) {
             return;
         }
 
         User user = userOpt.get();
-
-        user.getPerfis().forEach(perfil -> System.out.println("Using Role: " + perfil.getNome()));
-
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, user.getPerfis());
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
     private String getToken(HttpServletRequest request) {
-
         String authorization = request.getHeader("Authorization");
-
         if (authorization == null || !authorization.startsWith("Bearer ")) {
             return null;
         }
-
-        String substring = authorization.substring(7);
-
-        return substring;
+        return authorization.substring(7);
     }
-
-
 }

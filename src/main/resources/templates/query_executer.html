@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="UTF-8">
+<head th:replace="~{base :: head}"><title></title></head>
+<body>
+    <div th:replace="~{base :: logo}"></div>
+    <div class="container">
+        <div th:replace="~{base :: title('Query')}"></div>
+        <div class="card mb-3">
+                <label id="query">Query
+                    <input id="input_query" name="query" class="form-control" placeholder="select * from lancamento"/>
+                </label>
+            <button class="btn btn-primary" onclick="submitQuery()">Run</button>
+            <label>Query Result:
+                <p id="queryResult"></p>
+            </label>
+
+            <script th:inline="javascript">
+                function submitQuery() {
+                    let url = "http://localhost:8080/query";
+                    let query = $("#input_query").val();
+                    let data = {"query": ""+query}
+
+                    let callback = function(e) {
+                        console.log(e);
+                        $("#queryResult").text(e);
+                    }
+                    doRequest(url, "post", data, callback);
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

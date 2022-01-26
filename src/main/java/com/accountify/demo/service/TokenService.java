@@ -36,21 +36,17 @@ public class TokenService {
                 .compact();
     }
 
-    public boolean isValid (String token){
-        try{
+    public boolean isValid(String token) {
+        try {
             Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token);
             return true;
-        }
-        catch (Exception e
-            ){
+        } catch (Exception e) {
             return false;
-
         }
     }
 
-    public Long getUserId(String token){
+    public Long getUserId(String token) {
         Claims body = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
         return Long.parseLong(body.getSubject());
     }
-
 }
