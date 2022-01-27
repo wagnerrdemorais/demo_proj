@@ -45,9 +45,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/query").authenticated()
+            .antMatchers(HttpMethod.POST, "/query").hasRole("ADMIN")
+//            .antMatchers(HttpMethod.GET, "/query_executer").hasRole("ADMIN")
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .antMatchers(HttpMethod.GET, "/login").permitAll()
+            .antMatchers(HttpMethod.POST, "/download").permitAll()
             .antMatchers("/**").permitAll()
             .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and().csrf().disable()

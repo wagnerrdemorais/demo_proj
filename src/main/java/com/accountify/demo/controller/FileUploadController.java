@@ -37,7 +37,7 @@ public class FileUploadController {
         return ResponseEntity.ok("ok test");
     }
 
-    @RequestMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE, value = "/files", method = RequestMethod.GET)
+    @RequestMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE, value = "/download", method = RequestMethod.GET)
     @ResponseBody
     public FileSystemResource getFile(@RequestParam("fileName") String fileName) {
         return new FileSystemResource(fileName);

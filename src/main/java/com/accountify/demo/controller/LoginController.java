@@ -10,9 +10,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping(value = { "/","/login" })
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -37,7 +39,7 @@ public class LoginController {
         return ResponseEntity.status(HttpStatus.OK).body(token);
     }
 
-    @GetMapping("/login")
+    @GetMapping
     public String login() {
         return "login";
     }

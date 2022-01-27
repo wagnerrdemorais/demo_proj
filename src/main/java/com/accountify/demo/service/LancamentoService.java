@@ -1,6 +1,5 @@
 package com.accountify.demo.service;
 
-import com.accountify.demo.model.Lancamento;
 import com.accountify.demo.repository.LancamentoRepository;
 import org.springframework.stereotype.Service;
 

@@ -58,3 +58,15 @@ function runQuery() {
     }
     doRequest(url, "post", data, callback);
 }
+
+function runQuerySaveFile() {
+    let url = "http://localhost:8080/queryToFile";
+    let query = $("#input_query").val();
+    let data = {"query": "" + query}
+
+    let callback = function (e) {
+        console.log(e);
+        $("#queryResult").text(e);
+    }
+    doRequest(url, "post", data, callback);
+}
