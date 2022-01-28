@@ -33,7 +33,7 @@ public class QueryController {
     @PostMapping("/queryToFile")
     public ResponseEntity<List<String>> executeToFile(@RequestParam(name = "query") String query) throws IOException {
         List<String> queryReturn = lancamentoService.executeQuery(query);
-        fileService.createFile(queryReturn, ".csv");
+        fileService.createFile("queryResult", ".csv", queryReturn);
         return ResponseEntity.status(HttpStatus.OK).body(queryReturn);
     }
 

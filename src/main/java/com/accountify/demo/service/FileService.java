@@ -10,11 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -60,24 +60,26 @@ public class FileService {
         return crc32.getValue();
     }
 
-    public void createFile(List<String> queryReturn, String format) throws IOException {
-        LocalDateTime localDateTime = LocalDateTime.now();
+    public Path createFile(String name, String format, List<String> values) throws IOException {
 
-        String fileName = testFolderPath + "queryResult" + localDateTime.getNano() + format;
+        String fileName = testFolderPath + name + format;
         Path pathTo = Paths.get(fileName);
 
-        boolean exists = Files.exists(pathTo);
-        if (!exists) {
+        if (!Files.exists(pathTo)) {
             Files.write(pathTo, "".getBytes(), StandardOpenOption.CREATE);
+        } else {
+            FileChannel.open(pathTo, StandardOpenOption.WRITE).truncate(0).close();
         }
 
-        queryReturn.forEach(ret -> {
+        values.forEach(ret -> {
             try {
-                Files.write(pathTo, (ret+", ").getBytes(), StandardOpenOption.APPEND);
+                Files.write(pathTo, (ret+"\n").getBytes(), StandardOpenOption.APPEND);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+
+        return pathTo;
     }
 
     public List<String> listFilesPath() throws IOException {
