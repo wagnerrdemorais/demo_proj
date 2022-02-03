@@ -1,0 +1,33 @@
+2022-02-02 14:04:05.182  INFO 39604 --- [restartedMain] DemoApplication      : Starting DemoApplication using Java 11.0.13 on notecb-wmorais with PID 39604 (/home/wagner.morais/liferay/demo/target/classes started by wagner.morais in /home/wagner.morais/liferay/demo)
+2022-02-02 14:04:05.183  INFO 39604 --- [restartedMain] DemoApplication      : No active profile set, falling back to default profiles: default
+2022-02-02 14:04:05.221  INFO 39604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-02 14:04:05.222  INFO 39604 --- [restartedMain] .e.Despring internatilnalizationvToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-02 14:04:05.712  INFO 39604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-02 14:04:05.762  INFO 39604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 2 JPA repository interfaces.
+2022-02-02 14:04:06.269  INFO 39604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-02 14:04:06.275  INFO 39604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-02 14:04:06.275  INFO 39604 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-02 14:04:06.341  INFO 39604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-02 14:04:06.342  INFO 39604 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1120 ms
+2022-02-02 14:04:06.451  INFO 39604 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-02 14:04:06.477  INFO 39604 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-02 14:04:06.553  INFO 39604 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-02 14:04:06.604  INFO 39604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-02 14:04:06.606  WARN 39604 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2022-02-02 14:04:06.772  INFO 39604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-02 14:04:06.783  INFO 39604 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-02 14:04:07.158  INFO 39604 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-02 14:04:07.163  INFO 39604 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-02 14:04:07.403  WARN 39604 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-02 14:04:07.740  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/**.html'] with []
+2022-02-02 14:04:07.740  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/v2/api-docs'] with []
+2022-02-02 14:04:07.740  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/webjars/**'] with []
+2022-02-02 14:04:07.741  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/configuration/**'] with []
+2022-02-02 14:04:07.741  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure Ant [pattern='/swagger-resources/**'] with []
+2022-02-02 14:04:07.760  INFO 39604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e90bc49, org.springframework.security.web.context.SecurityContextPersistenceFilter@3a5be967, org.springframework.security.web.header.HeaderWriterFilter@7ef14267, org.springframework.security.web.authentication.logout.LogoutFilter@58848572, AuthenticationTokenFilter@491b38c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f5f3d1b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ee930b3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8d98379, org.springframework.security.web.session.SessionManagementFilter@24d23512, org.springframework.security.web.access.ExceptionTranslationFilter@5a1e538e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ee7bc1a]
+2022-02-02 14:04:07.783  INFO 39604 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-02 14:04:07.807  INFO 39604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-02 14:04:07.819  INFO 39604 --- [restartedMain] DemoApplication      : Started DemoApplication in 2.936 seconds (JVM running for 3.475)
+2022-02-02 17:57:52.487  INFO 39604 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-02 17:57:52.490  INFO 39604 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-02 17:57:52.496  INFO 39604 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
